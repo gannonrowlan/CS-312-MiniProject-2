@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cocktail Recipe</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <div class="container cocktail-info">
+      <h1><%= cocktail.strDrink %></h1>
+      <img src="<%= cocktail.strDrinkThumb %>" alt="<%= cocktail.strDrink %>" />
+      <h2>Ingredients:</h2>
+      <ul>
+        <% for (let i = 1; i <= 15; i++) { const ingredient =
+        cocktail['strIngredient' + i]; const measure = cocktail['strMeasure' +
+        i]; if (ingredient) { %>
+        <li><%= ingredient %> - <%= measure || '' %></li>
+        <% }} %>
+      </ul>
+      <h2>Instructions:</h2>
+      <p><%= cocktail.strInstructions %></p>
+      <form action="/random-cocktail" method="POST">
+        <button type="submit">Generate New Cocktail</button>
+      </form>
+    </div>
+  </body>
+</html>
